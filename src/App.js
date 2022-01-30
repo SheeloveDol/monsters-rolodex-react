@@ -17,6 +17,10 @@ class App extends Component {
     };
   }
 
+  handleChange = e => {
+    this.setState({searchField: e.target.value})
+  }
+
   // set/changes the state of the above monsters array with data from API
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
@@ -35,9 +39,10 @@ class App extends Component {
 
     return (
       <div className="App">
+        <h1>Monsters Rolodex</h1>
         <SearchBox 
-          placeholder='search them'
-          handleChange={e => this.setState({searchField: e.target.value})}
+          placeholder='search them all'
+          handleChange={this.handleChange}
         />
         <CardList monsters={filteredMonsters} />
       </div>
